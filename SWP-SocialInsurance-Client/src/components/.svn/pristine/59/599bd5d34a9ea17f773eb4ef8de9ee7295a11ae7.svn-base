@@ -1,0 +1,112 @@
+@import '../../../style/variables.less';
+@import '../../../style/mixins/mixins.less';
+.snDatetimeBut{
+    
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    top: 50%;
+    right: 0.06rem;
+    margin-top: -0.45rem;
+    background: url(../../../resource/img/templet/icon_date_h.png) no-repeat center;
+    background-size: 0.36rem 0.36rem;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;                
+}
+.SnDatetime{
+    .weui-cell {
+        font-size: 0.32rem;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        padding: 0.24rem 0.3rem;
+        background: #fff;
+        line-height: 0.42rem;
+    }
+    label.vux-label {
+        width: 1.7rem;
+        padding-right: 0.2rem;
+    }    
+    .weui-cell:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 0px;
+        border-top: 1px solid #D9D9D9;
+        -webkit-transform-origin: left bottom;
+        transform-origin: left bottom;
+        transform: scaleY(0.5);
+    }    
+            
+}
+@media (-webkit-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
+    .weui-cell{
+        &::after{
+            -webkit-transform: scaleY(0.7);
+            transform: scaleY(0.7);
+        }
+    }
+}
+@media (-webkit-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+    .weui-cell{
+        &::after{
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+    }
+}
+@media (-webkit-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    .weui-cell{
+        &::after{
+            -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+        }
+    }
+}
+
+
+@media screen and (min-width: @pc-width) { 
+    .snDatetimeBut{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        right: 55px;
+        margin-top: -15px;
+        background: url(../../../resource/img/templet/icon_date_h.png) no-repeat center;
+        background-size: 20px 20px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;       
+    }
+    .SnDatetime{
+        .weui-cell {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            padding: 8px 15px;
+            background: #fff;
+            line-height: 28px;
+        }
+        label.vux-label {
+            width: 85px;
+            padding-right: 14px;
+        }    
+        .weui-cell:after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 0px;
+            border-top: 1px solid #D9D9D9;
+            -webkit-transform-origin: left bottom;
+            transform-origin: left bottom;
+            transform: scaleY(0.5);
+        }                
+    }            
+}    

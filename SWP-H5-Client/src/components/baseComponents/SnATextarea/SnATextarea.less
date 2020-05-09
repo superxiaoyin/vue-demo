@@ -1,0 +1,85 @@
+.snText{
+    .weui-cell{
+        position: relative;    
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        padding: 0.24rem 0.3rem;
+        font-size: 0.32rem;
+        line-height: 0.42rem; 
+        color: #191919; 
+        background: #fff; 
+        .weui-cell__hd {
+            width: 1.7rem;
+            padding: 0 0.2rem 0 0;
+            display: inline-block;
+        }
+        .weui-cell__bd{
+            -webkit-box-flex: 1;      
+            -moz-box-flex: 1;        
+            -webkit-flex: 1;          
+            -ms-flex: 1;              
+            flex: 1;         
+        }
+    }
+    .weui-cell:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 0px;
+        border-top: 1px solid #D9D9D9;
+        transform-origin: 0 0;
+        transform: scaleY(0.5);
+    }             
+}
+.ashes .weui-textarea{
+    color: #b2b2b2!important;
+}
+@media screen and (min-width: @pc-width) {
+    .snText{
+        .weui-cell{
+            position: relative;    
+            display: -ms-flexbox;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            padding: 8px 89px 8px 0;
+            font-size: 14px;
+            line-height: 28px; 
+            color: #191919; 
+            background: #fff; 
+            .weui-cell__hd {
+                text-align: right;
+                width: 85px !important;
+                padding: 0 14px 0 0;
+                display: inline-block;
+                .weui-label{
+                    width: auto !important;
+                }
+            }
+            .weui-cell__bd{
+                border: 1px solid #d2d2d2;
+                height: auto;
+                min-height: 26px;
+                line-height: 26px;
+                font-size: 14px;
+                color: #191919;
+                border-radius: 3px;
+                padding: 0 10px;
+                display: block;
+                //margin-right: 121px;    
+                -webkit-box-flex: 1;      
+                -moz-box-flex: 1;        
+                -webkit-flex: 1;          
+                -ms-flex: 1;              
+                flex: 1;         
+            }
+        }
+        .weui-cell:after {
+            display: none;
+        }             
+    }                  
+}

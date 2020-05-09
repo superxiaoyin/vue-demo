@@ -1,0 +1,145 @@
+@import '../../style/common.less';
+
+.sn-contact {
+    .contact-list {
+        margin-top: 0.1rem;
+        .flex-box();
+        .flex-wrap();
+    }
+
+    .avatar {
+        display: block;
+        width: 100%;
+        height: 0.8rem;
+        border-radius: 4px;
+        background-size: contain;
+
+        &:after {
+            display: block;
+            content: " ";
+        }
+    }
+
+    .contact-item {
+        position: relative;
+        width: 0.8rem;
+        border-radius: 4px;
+        font-size: @fs-mob-normal;
+        margin-right: 20px;
+        height: 1.6rem;
+
+        span {
+            width: 100%;
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 36px;
+            text-align: center;
+            font-size: @fs-pc-small;
+        }
+
+        .add-icon {
+            display: block;
+            border: 1px dashed @dash-border;
+            height: 0.8rem;
+            border-radius: 4px;
+            margin-right: 0px;
+            text-align: center;
+            line-height: 0.8rem;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .del {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 19px;
+            height: 19px;
+            transform: translate(50%, -50%);
+            background: url("../../../resource/img/icon-del.png");
+
+            &:hover {
+                background: url("../../../resource/img/icon-del-hover.png")
+            }
+        }
+    }
+
+    .contact-input {
+        width: 100%;
+
+        .content-names {
+            padding: 0;
+            border: none;
+            font-size: 0.32rem;
+            color: #c2c2c2;
+            border-radius: 3px;
+            display: block;
+            margin-right: 0px;
+            flex: 1;
+
+            &:empty:before {
+                content: attr(placeholder);
+                color: #b2b2b2;
+            }
+
+            span {
+                color: @fc-normal;
+                font-size: 0.32rem;
+            }
+        }
+
+        .notebook {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            right: 0.06rem;
+            margin-top: -15px;
+            background: url(../resource/img/oa-icon-1-new.png) no-repeat center;
+            background-size: 19px 21px;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: @screen-xs-max) {
+    .sn-contact {
+        .contact-input {
+            .content-names {
+                border: 1px solid #d2d2d2;
+                padding: 0 10px;
+                font-size: @fs-pc-normal;
+                height: 30px;
+
+                span {
+                    font-size: 14px;
+                }
+            }
+
+            .notebook {
+                right: 55px;
+            }
+        }
+
+        .contact-item {
+            height: 82px;
+            width: 42px;
+            font-size: @fs-pc-normal;
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+            }
+
+            .add-icon {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+            }
+        }
+    }
+}

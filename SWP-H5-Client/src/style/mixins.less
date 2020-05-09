@@ -1,0 +1,197 @@
+@import "./variables.less";
+
+//手机端还原像素
+.repixelY(){
+    @media (-webkit-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
+        -webkit-transform: scaleY(0.7);
+        transform: scaleY(0.7);
+    }
+    @media (-webkit-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+    @media (-webkit-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleY(0.33);
+        transform: scaleY(0.33);
+    }
+}
+
+//手机端还原像素
+.repixelX(){
+    @media (-webkit-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
+        -webkit-transform: scaleX(0.7);
+        transform: scaleX(0.7);
+    }
+    @media (-webkit-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+        -webkit-transform: scaleX(0.5);
+        transform: scaleX(0.5);
+    }
+    @media (-webkit-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+        -webkit-transform: scaleX(0.33);
+        transform: scaleX(0.33);
+    }
+}
+
+.repixel(){
+    @media (-webkit-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    @media (-webkit-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    @media (-webkit-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+        -webkit-transform: scale(0.33);
+        transform: scale(0.33);
+    }
+}
+//手机端1px border-bottom
+.bb1px(@color: @bc-inline, @left: 0, @right: 0, @style: solid) {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        left: @left;
+        right: @right;
+        bottom: 0;
+        height: 1px;
+        border-bottom: 1px @style @color;
+        .repixelY()
+    }
+}
+
+//手机端1px border-top
+.bt1px(@color: @bc-inline, @left: 0, @right: 0, @style: solid) {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        left: @left;
+        right: @right;
+        top: 0;
+        height: 1px;
+        border-top: 1px @style @color;
+        .repixelY()
+    }
+}
+//手机端1px border-left
+.bl1px(@color: @bc-inline, @top: 0, @bottom: 0, @style: solid) {
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: @top;
+        bottom: @bottom;
+        width: 1px;
+        border-left: 1px @style @color;
+        .repixelX()
+    }
+}
+//手机端1px border-right
+.br1px(@color: @bc-inline, @top: 0, @bottom: 0, @style: solid) {
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: @top;
+        bottom: @bottom;
+        width: 1px;
+        border-right: 1px @style @color;
+        .repixelX()
+    }
+}
+
+//手机端1px border
+.b1px(@border-radius, @color: @bc-inline, @style: solid) {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        border-style: @style;
+        border-width: 1px;
+        border-color: @bc-inline;
+        border-radius: 2 * @border-radius;
+        .repixel();
+    }
+}
+
+/**
+ * 添加中划线
+ */
+.del(){
+    padding: 0 0.1rem;
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 1px;
+        background-color: @fc-info;
+    }
+}
+
+/**
+ * 显示@line行,超过的部分显示...
+ * @param  @line 显示的行数
+ */
+.line-clamp(@line){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.flex-box(){
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex(@value: 1){
+    -webkit-box-flex: @value;      
+    -moz-box-flex: @value;        
+    -webkit-flex: @value;          
+    -ms-flex: @value;              
+    flex: @value;                  
+}
+.flex-wrap(@value: wrap){
+    -webkit-flex-wrap: @value;
+    -moz-flex-wrap: @value;
+    -ms-flex-wrap: @value;
+    flex-wrap: @value;       
+}
+.justify-content(@value: center){
+    -webkit-box-pack: @value;
+    -webkit-justify-content: @value;
+    -moz-justify-content: @value;
+    -ms-justify-content: @value;
+    -o-justify-content: @value;
+    justify-content: @value;
+}
+.align-items(@value: center){
+    -ms-flex-align: @value;
+    -webkit-align-items: @value;
+    -moz-align-items: @value;
+    align-items: @value;
+}
+
+.place-holder(){
+    color:@fc-placeholder;
+    @media screen and (max-width: @screen-xs-max){
+        font-size: @fs-mob-normal;
+    }
+    @media screen and (min-width: @screen-xs-max){
+        font-size: @fs-pc-normal;
+    }
+}

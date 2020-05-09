@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title> list6 </title>
+    <script src="../thirdparty/jquery_1.10.1.min.js"></script>
+</head>
+
+<body>
+    <h1>list6点击"新开窗口"，然后点击"回退窗口"查看效果</h1>
+    <a href="#" class="btn back">回退到list2.html</a>
+    <br>
+    <a href="#" class="btn back1">回退2步 --- 使用index=-2</a>
+    <br>
+    <a href="#" class="btn back2">回退一步 --- 使用popWindow</a>
+    <script>
+        function ready(callback) {
+            // 如果 jsbridge 已经注入则直接调用
+            if (window.AlipayJSBridge) {
+                callback && callback();
+            } else {
+                // 如果没有注入则监听注入的事件
+                document.addEventListener('AlipayJSBridgeReady', callback, false);
+            }
+        }
+        ready(function () {
+            document.querySelector('.back').addEventListener('click', function () {
+                AlipayJSBridge.call('popTo', {
+                    urlPattern: 'list2.html',
+                }, function (e) {
+                    alert(JSON.stringify(e));
+                });
+            });
+
+            document.querySelector('.back1').addEventListener('click', function () {
+                AlipayJSBridge.call('popTo', {
+                    index: -2
+                }, function (e) {
+                    alert(JSON.stringify(e));
+                });
+            });
+
+            document.querySelector('.back2').addEventListener('click', function () {
+                AlipayJSBridge.call('popWindow');
+            });
+        });
+    </script>
+</body>
+
+</html>

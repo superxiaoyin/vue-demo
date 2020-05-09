@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title> list3 </title>
+    <script src="../thirdparty/jquery_1.10.1.min.js"></script>
+</head>
+
+<body>
+    <h1>list3点击"新开窗口"，然后点击"回退窗口"查看效果</h1>
+    <a href="#" class="btn pop">回退窗口</a>
+    <br>
+    <a href="#" class="btn new">新开窗口 -- 跳转到list4</a>
+    <script>
+        function ready(callback) {
+            // 如果 jsbridge 已经注入则直接调用
+            if (window.AlipayJSBridge) {
+                callback && callback();
+            } else {
+                // 如果没有注入则监听注入的事件
+                document.addEventListener('AlipayJSBridgeReady', callback, false);
+            }
+        }
+        ready(function () {
+            document.querySelector('.new').addEventListener('click', function () {
+                AlipayJSBridge.call("pushWindow", {
+                    url: "https://yqtdev.sinosun.com:18094/yqt/appstore/home/dist/pages/list4.html#/"
+                });
+            });
+
+            document.querySelector('.pop').addEventListener('click', function () {
+                AlipayJSBridge.call('popWindow');
+            });
+        });
+    </script>
+</body>
+
+</html>

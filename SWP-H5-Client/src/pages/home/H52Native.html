@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+    <title>H5向Native通信</title>
+    <style type="text/css">
+        input {
+            -webkit-appearance: none;
+            /*去除input默认样式*/
+        }
+        .jsapiButton {
+            height: 30px;
+            margin-left: 4%;
+            margin-top: 10px;
+            padding-left: 0px;
+            width: 28%;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .descript_title {
+            margin-bottom: 0px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .descript_content {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" width="100%" height="100%">
+        <p class="descript_title">窗口控制</p>
+        <p class="descript_content">
+            startSession/pushWindow在示例中均推入了本身页面， popTo只能退回到本Session内的页面，popWindow无Session限制
+        </p>
+        <button class="jsapiButton" onclick="jsapi_call('pushWindow', {url:window.location.href})">pushWindow</button>
+        <button class="jsapiButton" onclick="jsapi_call('pushWindow', {url:'http://10.2.25.108:8091/pages/list.html#/'})">pushWindow</button>
+        <button class="jsapiButton" onclick="jsapi_call('startSession'),{appId:'200000003', url:window.location.href}">startSession</button>
+        <button class="jsapiButton" onclick="jsapi_call('popWindow')">popWindow</button>
+        <button class="jsapiButton" onclick="jsapi_call('exitSession')">exitSession</button>
+        <button class="jsapiButton" onclick="jsapi_call('popTo', {index:0})">popTo</button>
+        <p class="descript_title">隐藏状态栏、导航栏</p>
+        <button class="jsapiButton" onclick="jsapi_call('showStatusBar')">showStatusBar</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideStatusBar')">hideStatusBar</button>
+        <button class="jsapiButton" onclick="jsapi_call('showTitlebar')">showTitlebar</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideTitlebar')">hideTitlebar</button>
+        <p class="descript_title">导航栏标题</p>
+        <button class="jsapiButton" onclick="jsapi_call('setTitle',{'title':'新标题','subtitle':'副标题'})">setTitle</button>
+        <button class="jsapiButton" onclick="jsapi_call('showTitleLoading')">showTitleLoading</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideTitleLoading')">hideTitleLoading</button>
+        <p class="descript_title">导航栏右侧按钮</p>
+        <button class="jsapiButton" onclick="jsapi_call('setOptionMenu',{title:'选择'})">setOptionMenu</button>
+        <button class="jsapiButton" onclick="jsapi_call('showOptionMenu')">showOptionMenu</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideOptionMenu')">hideOptionMenu</button>
+        <p class="descript_title">底部ToolBar</p>
+        <button class="jsapiButton" onclick="jsapi_call('setToolbarMenu',{menus:[{name:'字体',tag:'H5MenuActionOfFont',override:true,menus:[{name:'菜单项1',tag:'cm2',override:true}]},{name:'菜单项2',tag:'cm2',override:true},{name:'菜单项3',tag:'cm3',override:true}],override:true})">setToolbarMenu</button>
+        <button class="jsapiButton" onclick="jsapi_call('showToolbar')">showToolbar</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideToolbar')">hideToolbar</button>
+        <p class="descript_title">加载指示器</p>
+        <button class="jsapiButton" onclick="jsapi_call_showLoading()">showLoading</button>
+        <button class="jsapiButton" onclick="jsapi_call('hideLoading')">hideLoading</button>
+        <p class="descript_title">自定义扩展JSApi测试</p>
+        <button class="jsapiButton" onclick="jsapi_call('demoTest')">demoTest</button>
+        <button class="jsapiButton" onclick="jsapi_call('demoTest2')">demoTest2</button>
+        <button class="jsapiButton" onclick="custom_jsapi_test()">JSAPI调试页</button>
+        <p class="descript_title">UI</p>
+        <button class="jsapiButton" onclick="jsapi_call('alert',{title: '亲',message: '你好',button: '确定'})">alert</button>
+        <p class="descript_title">其它注意事项</p>
+        <p class="descript_content">
+            因为安卓的bridge机制不能确保及早注入，如要尽早的调用js-api，建议监听dom事件AlipayJSBridgeReady，即document.addEventListener('AlipayJSBridgeReady',
+            function(e) {xxxx});
+        </p>
+        <script type="text/javascript">
+            function jsapi_call(apiName, params) {
+                window.AlipayJSBridge && AlipayJSBridge.call(apiName, params, function (data) {
+                    alert('调用结果' + JSON.stringify(data));
+                });
+            }
+
+            function jsapi_call_showLoading() {
+                window.AlipayJSBridge && AlipayJSBridge.call('showLoading');
+                setTimeout("window.AlipayJSBridge && AlipayJSBridge.call('hideLoading')", 3000);
+            }
+
+            function jsapi_call_showToolbar() {
+                window.AlipayJSBridge && AlipayJSBridge.call('showLoading');
+                setTimeout("window.AlipayJSBridge && AlipayJSBridge.call('hideLoading')", 3000);
+            }
+
+            document.addEventListener('toolbarMenuClick', function (data) {
+                alert('调用结果' + JSON.stringify(data));
+                setTimeout("window.AlipayJSBridge && AlipayJSBridge.call('hideToolbar')", 0);
+            });
+
+            function custom_jsapi_test() {
+                window.AlipayJSBridge && AlipayJSBridge.call('pushWindow', {
+                    'url': 'H5JsApiTest.html'
+                }, function (data) {
+                    alert('调用结果' + JSON.stringify(data));
+                });
+            }
+        </script>
+</body>
+
+</html>

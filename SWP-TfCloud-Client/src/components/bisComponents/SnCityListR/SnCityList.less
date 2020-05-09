@@ -1,0 +1,32 @@
+@import (reference) '../../style/common.less';
+
+.snCityList.weui-cell {
+    position: relative;
+}
+
+.snCityList .weui-cell__ft {
+    .flex-box();
+
+    &:after {
+        content: '';
+        width: 0.4rem;
+        height: 0.4rem;
+        background: url(../resource/img/icon_narrow_right.png) no-repeat center;
+        background-size: 0.42rem 0.42rem;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: @pc-width) {
+    .snCityList .weui-cell__ft {
+        padding: 0 0 0 10px;
+
+        &:after {
+            width: 20px;
+            height: 30px;
+            background-size: 22px 22px;
+        }
+    }
+}

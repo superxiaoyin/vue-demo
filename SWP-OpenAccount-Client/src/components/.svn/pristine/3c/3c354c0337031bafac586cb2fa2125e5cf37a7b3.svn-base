@@ -1,0 +1,31 @@
+@import '../../style/variables.less';
+.snTextMultiDiv p{
+    padding: 0.1rem 0.3rem;
+    font-size: 0.32rem;
+    text-indent: 0.64rem;
+    line-height: 150%;
+    background: #fff;
+}
+.snTextMultiDiv .fontBig{
+    font-size: 0.34rem;
+    padding-top: 0.3rem;
+    text-align: center;
+    text-indent:initial;
+}
+.textMultiDivClass+div .weui-cells:before{
+    display: none !important;
+} 
+
+@media screen and (min-width: @pc-width) {
+    .snTextMultiDiv p{
+        padding: 10px 30px;
+        font-size: 14px;
+        text-indent: 28px;
+    }    
+    .snTextMultiDiv .fontBig{
+        padding: 0; 
+        font-size: 18px;
+        text-indent:initial;
+    }
+      
+}

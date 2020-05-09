@@ -1,0 +1,214 @@
+@import '../../style/variables.less';
+
+.sn-radio {
+    padding: 0.24rem 0.3rem;
+    font-size: 0;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.sn-radio .label {
+    display: inline-block;
+    width: 1.9rem;
+    font-size: 0.32rem;
+    line-height: 0.42rem;
+    padding-right: 0.2rem;
+    color: @fc-label;
+}
+
+.radioRight {
+    flex: 1;
+}
+
+.radio {
+    display: inline-block;
+    margin-right: 0.4rem;
+}
+
+.leftIcoBox {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #b2b2b2;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+.leftIco {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 1px;
+    display: block;
+}
+
+.radioText {
+    display: inline-block;
+    line-height: 0.42rem;
+    font-size: 0.32rem;
+    vertical-align: middle;
+}
+
+.radioCheck.leftIcoBox {
+    border-color: @color-blue;
+}
+
+.radioCheck .leftIco {
+    background: @color-blue;
+}
+
+.red .radioCheck.leftIcoBox {
+    border-color: #fc3536;
+}
+
+.red .radioCheck .leftIco {
+    background: #fc3536;
+}
+
+.yellow .radioCheck.leftIcoBox {
+    border-color: #f8a339;
+}
+
+.yellow .radioCheck .leftIco {
+    background: #f8a339;
+}
+
+.green .radioCheck.leftIcoBox {
+    border-color: #25cb67;
+}
+
+.green .radioCheck .leftIco {
+    background: #25cb67;
+}
+
+.around .leftIcoBox {
+    border-radius: 999px;
+}
+
+.around .leftIco {
+    border-radius: 999px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.bigRadio.radioBox {
+    height: 0.66rem;
+    padding-top: 0.24rem;
+    font-size: 0;
+    display: flex;
+    display: -webkit-flex;
+}
+
+.bigRadio .label {
+    display: none;
+}
+
+.bigRadio .radioRight {
+    text-align: center;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    padding: 0 15px;
+}
+
+.bigRadio .radio {
+    margin-right: 0;
+}
+
+.bigRadio .leftIcoBox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+.bigRadio .leftIco {
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+}
+
+.bigRadio .radioText {
+    line-height: 40px;
+    height: 40px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.oneline.sn-radio {
+    display: initial;
+}
+
+.oneline.sn-radio .label {
+    width: auto;
+}
+
+.oneline.sn-radio .radioRight {
+    padding-top: 0.2rem;
+    padding-left: 0.3rem;
+}
+.tipsImg {
+    position: absolute;
+    display: inline-block; 
+    width: 20px;
+    /* height: 20px; */
+    padding-top: 0.8rem;
+    padding-left: 0.6rem;
+    background: url("../resource/img/tips.png") no-repeat right;
+    background-size: 0.32rem;
+}
+
+.magleft{
+    margin-left: 0.78rem;
+}
+
+@media screen and (min-width: @pc-width) {
+    .sn-radio {
+        padding: 8px 0;
+    }
+
+    .sn-radio .label {
+        width: 100px;
+        font-size: 14px;
+        line-height: 26px;
+        padding-right: 14px;
+        text-align: right;
+    }
+
+    .radioText {
+        display: inline-block;
+        line-height: 26px;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .radio {
+        display: inline-block;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    .oneline.radioBox {
+        display: initial;
+    }
+
+    .oneline.radioBox .label {
+        width: auto;
+    }
+
+    .oneline.radioBox .radioRight {
+        padding-top: 0rem;
+        padding-left: 0rem;
+    }
+    .tipsImg {
+        padding-left: 0.9rem;
+    }
+    .magleft{
+        margin-left: 1.0rem;
+    }
+}

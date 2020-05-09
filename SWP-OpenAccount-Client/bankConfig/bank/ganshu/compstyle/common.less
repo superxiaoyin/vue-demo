@@ -1,0 +1,304 @@
+@charset"utf-8";
+@import "./mixins.less";
+
+//================== 公用样式库  class以sn- 开头 ========================
+//------------------- normal 通用样式--------------------------
+.full-s {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e5e5 !important;
+}
+
+//body下面的主内容区域
+.sn-main-con {
+    min-height: 100vh;
+    max-width: @max-content-width;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.showmask {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.4;
+    opacity: .40;
+    filter: alpha(opacity=40);
+}
+
+//文字超出部分使用...
+.sn-nowrap,
+.nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.sn-hide,
+.hide {
+    display: none;
+}
+
+.sn-fl,
+.fl {
+    float: left;
+}
+
+.sn-fr,
+.fr {
+    float: right;
+}
+
+.sn-clearfix,
+.clearfix {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+        content: "";
+        line-height: 0;
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+//内容区块
+.sn-section {
+    margin-bottom: @margin-mob-normal;
+    background-color: #fff;
+}
+
+.sn-bottom,
+.bottom {
+    height: 5rem;
+    width: 100%;
+    background: #ffffff;
+}
+
+.sn-disp,
+.disp {
+    height: .6rem;
+}
+
+.sn-wf,
+.wf {
+    font-weight: 600;
+    font-size: .34rem;
+}
+
+.sn-pointer {
+    cursor: auto;
+}
+
+div.vux-popup-dialog {
+    left: 50% !important;
+    transform: translateX(-50%);
+    background: #fff;
+    max-width: @max-content-width;
+}
+
+div.weui-cell {
+    padding: 0.24rem 0.3rem;
+}
+
+.weui-cell__ft {
+    color: @fc-normal  !important;
+}
+
+input,
+textarea {
+    color: @fc-normal;
+}
+
+.weui-cell_access .weui-cell__ft {
+    padding-right: 0.34rem;
+
+    &::after {
+        border-color: #c2c2c2;
+        height: 0.16rem;
+        width: 0.16rem;
+    }
+}
+
+.weui-label,
+.vux-label {
+    width: 1.9rem !important;
+    padding-right: 0.3rem;
+    color: @fc-label;
+}
+
+.vux-tab .vux-tab-item.vux-tab-selected {
+    color: #478aee;
+    border-bottom: 1px solid #478aee;
+}
+
+::-webkit-input-placeholder {
+    color: #c2c2c2;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    .place-holder();
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    .place-holder();
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    .place-holder();
+}
+
+::-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    .place-holder();
+}
+
+//------------------ mobile 移动端通用样式 ---------------------
+@media screen and (max-width: @screen-xs-max) {
+
+    //  手机端关闭文本选择复制功能 input textarea 打开文本选择复制功能
+    * {
+        -webkit-user-select: none;
+        /* Chrome/Safari/Opera */
+        -khtml-user-select: none;
+        /* Konqueror */
+        -moz-user-select: none;
+        /* Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    input,
+    textarea {
+        //     font-size: 1em;
+        //     width: 100%;
+        //     padding: 0;
+        //     outline: none;
+        //     border: none;
+        -webkit-touch-callout: initial;
+        /* iOS Safari */
+        -webkit-user-select: initial;
+        /* Chrome/Safari/Opera */
+        -khtml-user-select: initial;
+        /* Konqueror */
+        -moz-user-select: initial;
+        /* Firefox */
+        -ms-user-select: initial;
+        /* Internet Explorer/Edge */
+        user-select: initial;
+    }
+
+    //  IOS 输入框 placeholder偏移问题处理
+    // input::-webkit-input-placeholder {
+    //     line-height: 1em;
+    // }
+    .sn-main-con {
+        background: #f2f3f5;
+    }
+
+    .weui-cell__ft,
+    .weui-label,
+    .vux-label,
+    .weui-textarea,
+    input {
+        font-size: @fs-mob-normal;
+    }
+}
+
+//------------ pc端通用样式 包括pc客户端 浏览器端 -------------
+@media screen and (min-width: @screen-xs-max) {
+
+    /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+    ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+        border-radius: 10px;
+    }
+
+    /*定义滚动条的轨道，内阴影及圆角*/
+    ::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
+
+    /*定义滑块，内阴影及圆角*/
+    ::-webkit-scrollbar-thumb {
+        width: 7px;
+        height: 7px;
+        border-radius: 10px;
+        background-color: #cccccc;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #969696;
+    }
+
+    //pc放开文本选择复制功能
+    * {
+        -webkit-touch-callout: initial;
+        /* iOS Safari */
+        -webkit-user-select: initial;
+        /* Chrome/Safari/Opera */
+        -khtml-user-select: initial;
+        /* Konqueror */
+        -moz-user-select: initial;
+        /* Firefox */
+        -ms-user-select: initial;
+        /* Internet Explorer/Edge */
+        user-select: initial;
+    }
+
+    .sn-main-con {
+        padding: 0 30px;
+        background: #fff;
+    }
+
+    div.weui-cells,
+    div.weui-cell,
+    label.vux-label,
+    textarea.weui-textarea {
+        font-size: @fs-pc-normal;
+    }
+
+    div.weui-cell {
+        padding: 14px 15px;
+    }
+
+    .weui-toast__content {
+        font-size: 14px;
+    }
+
+    .weui-cell:before {
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .weui-cells:after {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .sn-pointer {
+        cursor: pointer;
+    }
+}
+
+//------------ 大屏pc端通用样式 包括pc客户端 浏览器端 -------------
+@media screen and (min-width: @screen-md-min) {
+    .sn-main-con {
+        padding: 0 50px;
+    }
+}

@@ -1,0 +1,207 @@
+@import "../../style/common.less";
+
+@list-item-prefix-cls: ~"@{sino-prefix}-list-item";
+
+.@{list-item-prefix-cls} {
+    font-size: .32rem;
+
+    &-index {
+        background: #f2f3f5;
+        padding-left: 0.2rem;
+        line-height: 0.6rem;
+    }
+
+    &.active {
+        .@{list-item-prefix-cls}-right:after {
+            background: url(../resource/img/yes_icon.png) no-repeat center;
+            background-size: contain;
+        }
+    }
+
+
+    &-panel {
+        .flex-box();
+        .align-items();
+
+        &:active {
+            background-color: #ececec;
+        }
+
+        @small-size: .58rem;
+
+        .@{list-item-prefix-cls}-icon {
+            width: @small-size;
+            height: @small-size;
+            margin-right: .3rem;
+
+            img {
+                height: @small-size;
+            }
+        }
+
+        .@{list-item-prefix-cls}-main {
+            padding: .17rem .3rem .17rem 0;
+            .flex(1);
+            .flex-box();
+            .bb1px();
+
+            .@{list-item-prefix-cls}-con {
+                line-height: @small-size;
+                .flex(1);
+
+                .@{list-item-prefix-cls}-display {
+                    word-break: break-all;
+                    word-wrap: break-word;
+                }
+            }
+
+            .@{list-item-prefix-cls}-right {
+                .flex-box();
+                .align-items();
+
+                &:after {
+                    content: " ";
+                    display: block;
+                    width: 0.44rem;
+                    height: 0.44rem;
+                }
+            }
+        }
+
+    }
+
+    &-middle {
+        @middle-size: .72rem;
+
+        .@{list-item-prefix-cls}-icon {
+            width: @middle-size;
+            height: @middle-size;
+            margin-right: .3rem;
+
+            img {
+                height: @middle-size;
+            }
+        }
+
+        .@{list-item-prefix-cls}-main {
+            padding: .19rem 0;
+
+            .@{list-item-prefix-cls}-con {
+                line-height: @middle-size;
+            }
+
+        }
+    }
+
+    &-big {
+        @big-size: .92rem;
+
+        .@{list-item-prefix-cls}-icon {
+            width: @big-size;
+            height: @big-size;
+            margin-right: 0.2rem;
+
+            img {
+                height: @big-size;
+            }
+        }
+
+        .@{list-item-prefix-cls}-main {
+            padding: .21rem 0;
+
+            .@{list-item-prefix-cls}-con {
+                line-height: @big-size;
+            }
+
+        }
+    }
+
+    &-left {
+        line-height: 1;
+        flex: 1;
+        overflow: hidden;
+
+        .title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &-right {
+        text-align: right;
+        color: #c2c2c2;
+        font-size: 0.28rem;
+    }
+
+    .sn-link {
+        .flex-box();
+        .align-items(center);
+
+        &::after {
+            content: " ";
+            display: inline-block;
+            border-color: #c2c2c2;
+            height: 0.16rem;
+            width: 0.16rem;
+            border-width: 2px 2px 0 0;
+            border-style: solid;
+            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            right: 2px;
+        }
+    }
+
+    &-choose {
+        position: relative;
+        background: #fff;
+        .flex-box();
+        .align-items();
+        .justify-content(space-between);
+        height: 1.1rem;
+        padding: 0 0.3rem;
+        font-size: 0.32rem;
+
+        &:active {
+            background-color: #ececec;
+        }
+
+        .listRight {
+            .flex-box();
+
+            .mark {
+                margin-right: 0.3rem;
+                color: #c2c2c2;
+            }
+
+            img {
+                width: 0.38rem;
+                height: 0.29rem;
+            }
+        }
+
+        &:after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 1px;
+            border-bottom: 1px solid #e5e5e5;
+            color: #e5e5e5;
+            transform-origin: 0 100%;
+            transform: scaleY(0.5);
+            left: 0.3rem;
+        }
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .@{list-item-prefix-cls} {
+        font-size: 14px;
+
+        .@{list-item-prefix-cls}-main {
+            cursor: pointer;
+        }
+    }
+
+}

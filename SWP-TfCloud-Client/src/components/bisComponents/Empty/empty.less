@@ -1,0 +1,72 @@
+@import (reference) '../../style/common.less';
+
+.empty-comp {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Hiragino Sans GB', 'Microsoft Yahei', '\5FAE\8F6F\96C5\9ED1', '\5B8B\4F53', Tahoma, Arial, Helvetica, STHeiti, sans-serif;
+    align-items: center;
+
+    .panel {
+        width: 100%;
+
+        i {
+            display: block;
+            width: 100%;
+            height: 1.62rem;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            &.no-content {
+                height: 2.56rem;
+                background-image: url("../resource/img/no_content.png");
+            }
+
+            &.no-search {
+                background-image: url("../resource/img/no_search.png");
+            }
+
+            &.no-contract,
+            &.no-sign {
+                background-image: url("../resource/img/noContract.png");
+            }
+
+            &.no-app {
+                background-image: url("../resource/img/no_app.png");
+            }
+        }
+
+        .emptyTips {
+            font-size: .32rem;
+            color: #999;
+            text-align: center;
+            line-height: 0.8rem;
+        }
+
+        .emptyTipsLine2 {
+            font-size: .32rem;
+            color: #999;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (min-width: @pc-width) {
+    .empty-comp {
+        .panel {
+            .emptyTips {
+                font-size: 16px;
+            }
+
+            .emptyTipsLine2 {
+                font-size: 16px;
+            }
+        }
+    }
+}

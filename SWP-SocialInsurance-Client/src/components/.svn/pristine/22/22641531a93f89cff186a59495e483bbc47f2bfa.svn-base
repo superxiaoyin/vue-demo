@@ -1,0 +1,113 @@
+@import (reference) '../../style/common.less';
+
+.snselfadd {
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    top: 50%;
+    right: 0.06rem;
+    margin-top: -0.45rem;
+    background: url(../resource/img/snselfadd/jia.png) no-repeat center;
+    background-size: 0.36rem 0.36rem;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.snselfdel {
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    top: 50%;
+    right: 0.06rem;
+    margin-top: -0.45rem;
+    background: url(../resource/img/snselfadd/jian.png) no-repeat center;
+    background-size: 0.36rem 0.36rem;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.selfAddWrap {
+    position: relative;
+}
+
+.selfAddWrap .weui-cell_access .weui-cell__ft:after {
+    display: none !important;
+}
+
+.selfAddWrap:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+.selfAddWrap .vux-label {
+    width: 1.9rem;
+}
+
+.selfAddWrap .snPopupRight .weui-cell__ft {
+    .flex-box();
+    position: relative;
+
+    &:after {
+        content: ' ';
+        width: 0.9rem;
+        height: 0.9rem;
+        right: .6rem;
+        background: url(../../../resource/img/icon_narrow_right.png) no-repeat center;
+        background-size: 0.42rem 0.42rem;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: @pc-width) {
+    .snselfadd {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        right: 55px;
+        margin-top: -15px;
+        background: url(../resource/img/snselfadd/jia.png) no-repeat center;
+        background-size: 14px 14px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .snselfdel {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        right: 55px;
+        margin-top: -15px;
+        background: url(../resource/img/snselfadd/jian.png) no-repeat center;
+        background-size: 14px 14px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    .selfAddWrap:before {
+        display: none;
+    }
+
+    .selfAddWrap .snPopupRight .weui-cell__ft {
+        &:after {
+            right: 0;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}

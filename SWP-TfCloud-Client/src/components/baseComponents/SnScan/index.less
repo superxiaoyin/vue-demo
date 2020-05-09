@@ -1,0 +1,37 @@
+@import (reference) "../../style/common.less";
+
+@calendar-prefix-cls: ~"@{sino-prefix}-scan";
+
+.@{calendar-prefix-cls} {
+    .flex-box();
+    .align-items(center);
+
+    .weui-cell {
+        .flex(1);
+        padding-right: 0 !important;
+    }
+
+    .@{calendar-prefix-cls}-icon {
+        display: none;
+        width: 0.9rem;
+        height: 0.9rem;
+        // background-image: url(../resource/img/scanicon.png);
+        background-size: 0.42rem 0.42rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: @screen-xs-max) {
+    .@{calendar-prefix-cls} {
+        padding-right: 59px; 
+        .@{calendar-prefix-cls}-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-size: 21px 21px;
+        }
+    }
+}

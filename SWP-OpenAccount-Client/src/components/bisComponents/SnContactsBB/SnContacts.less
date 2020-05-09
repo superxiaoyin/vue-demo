@@ -1,0 +1,251 @@
+@import '../../style/variables.less';
+@import '../../style/mixins.less';
+@charset "utf-8";
+/*快速选择插件*/
+.bgf2{
+    position:fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: @color-bg;
+}
+.quick_name_box{
+    padding-bottom:1.82rem;
+    font-size: 0.32rem;
+    color: #7f7f7f;
+}
+.tijiaogei{
+    margin-bottom: 0.32rem;
+    background: #fff;
+    border-top:1px solid #efefef;       
+    border-bottom:1px solid #efefef;    
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.tijiaogei_tit{
+    height: 0.91rem;
+    line-height: 0.91rem;
+    border-bottom:1px solid #efefef;    
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.tijiaogei_tit_text{
+    height: 0.91rem;
+    margin-left: 0.32rem;
+    font-size:0.32rem;
+}
+.tijiaogei_tit_text span{
+    font-size: 0.3rem;
+}
+
+.tijioagei_info{
+    height: 0.91rem;
+}
+.tijiaogei_radio{
+    height: 0.91rem;
+    width: 0.91rem;
+    background: url(../resource/img/addresslist/quick_ra_a.png) no-repeat center;
+    background-size: 0.39rem 0.39rem;
+    margin-left: 0.05rem;
+}
+.tijiaogei_choosed{
+    background-image: url(../resource/img/addresslist/quick_ra_b.png);
+}
+.tijiaogei_text_box{
+    height:0.91rem;
+    border-top:1px solid #efefef;   
+    overflow: hidden;
+}
+.tijiaogei_info_box>:first-child .tijiaogei_text_box{
+    border:none;
+}
+.tijiaogei_icon{
+    margin-top: 0.12rem;
+    display: inline-block;
+    height: 0.64rem;
+    width: 0.64rem;
+    border-radius: 0.05rem;
+}
+.tijiaogei_icon_img,.tijiaogei_icon span{
+    display: inline-block;
+    height: 0.64rem;
+    width: 0.64rem;
+    border-radius: 0.05rem;
+    background-size: 100%;
+}
+.tijiaogei_icon img{
+    display: inline-block;
+    height: 0.64rem !important;
+    width: 0.64rem !important;
+    border-radius: 0.05rem !important;
+    float:left;
+}
+.tijiaogei_text{
+    height:0.91rem;
+    width:3.5rem;
+    line-height: 0.91rem;
+    margin-left: 0.32rem;
+    font-size:0.32rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.queding_button_box{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background:#f2f3f5; 
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.queding_button{
+    font-size: 0.4rem;
+    margin: 0.5rem 0.3rem;
+    height: 0.92rem;
+    color: #fff;
+    line-height: 0.94rem;
+    text-align: center;
+    background-color: @color-blue;
+    border-radius: 0.06rem;
+}
+.no_zhihuiren_box{
+    background: #f2f3f4;
+    background: #fff;
+    height: 0.91rem;
+    line-height: 0.91rem; 
+    text-align:center;
+}
+.no_zhihuiren{
+    display:inline-block;
+    height: 0.91rem;
+    line-height: 0.91rem;
+    font-size:0.32rem;
+}
+
+
+/**
+人员删除
+ */
+.member_del{
+    display: inline-block;
+    background: url("../resource/img/addresslist/del.png") no-repeat right top 0.05rem;
+    background-size: 0.18rem;
+    padding-right: 0.18rem;
+}
+.notebook {    
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem;
+    top: 50%;
+    right: 0.06rem;
+    margin-top: -0.45rem;
+    background: url(../resource/img/oa-icon-1-new.png) no-repeat center;
+    background-size: 0.37rem 0.42rem;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;               
+}
+.cellTitle{
+    width: 1.5rem;
+}
+.cellText{
+    width: 1.7rem;
+    padding-right: 0.2rem;
+}
+.content_names{
+    margin-right: 1rem;
+    flex: 1;
+}
+.content_names:empty:before {
+    content: attr(placeholder);
+    color: #b2b2b2;
+}
+@media screen and (min-width: @pc-width) {
+    .contact{
+        width: 550px;
+    }
+    .contact .weui-cell{
+        padding: 9px 0 !important;
+    }
+    .contact .cellText{
+        width: 101px;
+        line-height: 28px;
+        text-align: right;
+        padding-right: 14px;
+        padding-left: 0;
+        min-height: 28px;        
+    }
+    .contact .cellText span{
+        font-size: 14px;
+        vertical-align: super;
+    }
+    .contact .content_names{
+        border: 1px solid #d2d2d2;
+        height: auto;
+        min-height: 26px;
+        line-height: 26px;
+        font-size: 14px;
+        color: #191919;
+        border-radius: 3px;
+        padding: 0 10px;
+        display: block; 
+        margin-right: 121px;      
+    }
+    .contact .notebook{ 
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        right: 87px;
+        margin-top: -15px;
+        background: url(../resource/img/oa-icon-1-new.png) no-repeat center;
+        background-size: 19px 21px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;      
+
+    }
+    
+    .contact.submitWrap .content_names{
+        border: 1px solid rgba(255,255,255,0);
+        height: auto;
+        min-height: 26px;
+        line-height: 26px;
+        font-size: 14px;
+        color: rgba(0,0,0,.3);
+        border-radius: 3px;
+        padding: 0 10px;
+        display: block; 
+        margin-right: 104px;      
+    }
+    .contact.submitWrap .content_names:empty{
+        border: 1px solid #d2d2d2;      
+    }
+    .contact.submitWrap .notebook{ 
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        right: 70px;
+        margin-top: -15px;
+        background: url(../resource/img/oa-icon-1-new.png) no-repeat center;
+        background-size: 19px 21px;
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer; 
+    }
+        
+    .contact .member_del{
+        display: inline-block;
+        background-size: 9px;
+        padding-right: 9px;
+        color: #191919;
+    }
+    .contact .weui-cells:before{
+        display: none;
+    }
+}

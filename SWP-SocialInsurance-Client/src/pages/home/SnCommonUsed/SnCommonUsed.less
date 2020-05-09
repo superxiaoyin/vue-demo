@@ -1,0 +1,28 @@
+@import '../../../newStyle/sn-common.less';
+
+.sn-common-used{
+    display: none;
+}
+@media screen and (min-width: @screen-xs-max){
+    
+}
+
+@media screen and (min-width: @screen-md-min){
+    .sn-common-used{
+        .flex-box();
+        .sn-label{
+            margin-right: 15px;
+        }
+        .common-used-list{
+            .flex-box();
+            .flex-warp();
+            .common-used-item{
+                font-size: @fs-pc-normal;
+                padding: 0 15px;
+                border-radius: 3px;
+                background-color: @btn-disable;
+                margin-right: 20px;
+            }
+        }
+    }
+}

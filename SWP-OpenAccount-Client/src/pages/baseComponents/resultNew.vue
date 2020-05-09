@@ -1,0 +1,188 @@
+<template>
+    <div class="result">
+        <div class="result-status" :class="{'extra':result.status===2||!result.infoList}">
+            <i :class="result.status===1?'success-icon':'failed-icon'"></i>
+            <span class="status-text" v-if="!!result.text">{{result.text}}</span>
+            <span class="status-money" v-if="!!result.amount">¥{{result.amount|moneyFrt}}</span>
+            <div class="text-info">
+                <span class="status-info" v-if="!!result.info">{{result.info}}</span>
+                <span class="status-desc" v-if="!!result.desc">{{result.desc}}</span>                
+            </div>
+        </div>
+        <div class="result-info" v-if="!!result.infoList&&result.infoList.length">
+            <div v-for="info in result.infoList">
+                <sn-cell :title="info.title" :value="info.value" value-align="right"></sn-cell>
+            </div>
+        </div>
+        <div class="result-btn">
+            <sn-button @SnButtonClick="completed">完成</sn-button>
+            <div v-if="result.status==1">
+                <!-- <a class="sn-pointer" @click="lottery">免费领取花田酒地门票</a> -->
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+import {backRouterByValue,openRouterByValue,getLocalData,deleteLocalStorage,getServerDataH5 } from '../handler/handler'
+import {SnButton,SnCell} from 'components'
+import { registerHandler, notifyAppBackEvent } from 'sslib/common/SnJsBridge'
+import { goBackPage,throttle,initTitleMenu } from 'sslib/common/extend'
+export default {
+    data(){
+        return{
+            result:{},
+            phone:'',
+            id:''
+        }
+    },
+    components:{
+        SnButton,SnCell
+    },
+    created(){
+        let _this = this;
+        _this.init();
+    },
+    methods:{
+        init(){
+            let _this = this;
+            _this.phone = _this.$route.query.phone;
+            if(!!_this.$route.query.result){
+                _this.result = JSON.parse(decodeURIComponent(_this.$route.query.result));
+                _this.phone = _this.$route.query.phone;
+            }
+
+            getServerDataH5('/yqt/accountMgr/accountMgr.queryLotteryInfo',{phone:_this.phone},'POST').then(res => {
+                if(res.code ==0){
+                    console.log(res)
+                    _this.activityCode = res.activityCode
+                    _this.channelNo = res.channelNo
+                    _this.expireTime = res.expireTime
+                    _this.partakeAttach = res.partakeAttach
+                    // _this.partakeAttach = '13288888888'
+                    _this.channelKey = res.channelKey
+                    _this.lotteryUrl = res.lotteryUrl
+                }
+            })
+        },
+        completed(){
+            let _this =  this;
+            // openRouterByValue("finance",{phone:_this.phone},_this);
+            _this.id = getLocalData('ticketid')
+            if(getLocalData('ticket') == 1){
+                // window.location.href = 'ticketshop.html?phone='+phone+'&listType=2/myticket';  
+                deleteLocalStorage('ticket')
+                deleteLocalStorage('ticketid')
+                window.location.href = `ticketshop.html?phone=${_this.phone}#/buyconfirm?ticketId=${_this.id}`;
+
+            }else{
+                window.location.href = `openaccount.html#/finance?phone=${_this.phone}`;
+                // window.location.href = `openaccount.html#/finance?phone=${_this.phone}&listType=2`;
+                // window.location.href = `home.html?phone=${_this.phone}#/index`
+            }
+        },
+        lottery(){
+            let _this =  this;            
+          
+      
+            let partakeCode = _this.getRandomString(10);
+            let paramStr = 'activityCode='+ _this.activityCode +'&channelNo='+ _this.channelNo 
+            +'&expireTime='+ _this.expireTime +'&partakeCode='+ partakeCode;
+            let dataBy = Hex.utf8StrToBytes(paramStr + _this.channelKey);
+			let sm3 = new SM3Digest();
+			sm3.update(dataBy,0,dataBy.length);
+			let sm3Hash = sm3.doFinal();//得到的数据是个byte数组
+            let sm3HashHex = Hex.encode(sm3Hash,0,sm3Hash.length);//编码成16进制可见字符
+            let sign = new String(sm3HashHex).toLocaleLowerCase();//转成小写
+
+            window.location.href = _this.lotteryUrl+'?'+ paramStr+'&partakeAttach='+ _this.partakeAttach+'&sign='+sign
+            
+        },
+        /**
+         * 随机生成数据 partakeCode 领取编号（保证唯一，长度20以内）
+         */
+        getRandomString(len){
+            let realLen = 0;
+            if(len != undefined && len > 0){
+                realLen = len;
+            }else{
+                realLen = parseInt(Math.random()*10)+1;
+            }
+            let resultString = '';
+            for(let i = 0;i<realLen;i++){
+                resultString += parseInt(Math.random()*100);
+            }
+            return resultString;
+        }
+    }
+}
+</script>
+<style lang="less" scoped>
+    @import '~components/style/common.less';
+    .result{
+        background: @color-white;
+        padding: 0 .3rem;
+        display: flex;
+        flex-direction: column;
+        .result-status{
+            flex: 1.4;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .success-icon{
+                background: url('../../resource/img/icon_success.png') no-repeat center;
+            }
+            .failed-icon{
+                background: url('../../resource/img/icon_failed.png') no-repeat center;
+            }
+            .success-icon,.failed-icon{
+                display: block;
+                height: .8rem;
+                width: .8rem;
+                background-size: .8rem .8rem;
+            }
+            .status-text{
+                height: .8rem;
+                line-height: .8rem;
+            }
+            .status-money{
+                font-size: .56rem;
+                font-weight: bolder;
+            }
+            .text-info{
+                width: 4.2rem;
+            }
+            .status-desc{
+                color: @fc-info;
+            }
+        }
+        .extra{
+            flex: 2.2;
+        }
+        .result-info{
+            flex: 0.8;
+            .sn-cell:before{
+                border-bottom: none !important;
+            } 
+            .sn-cell{
+                border-bottom: 1px solid @color-bg;
+                padding: .24rem 0 !important;
+                .sn-cell-label{
+                    width: 2.5rem !important;
+                }
+            }
+        }
+        .result-btn{
+            flex: 1.4;
+            .sn-pointer{
+                position: absolute;
+                width: 100%;text-align: center;
+                bottom: 20%;
+                left: 0;
+                text-decoration: underline;
+                color: #E8422E;
+                cursor: pointer;
+            }
+        }
+    }
+</style>
