@@ -4,4 +4,4 @@ var bboxClient = 'https://yqtblackbox.sinosun.com:18093/yqt/reservation/home/';
 var clientHostTemp = 'https://10.2.25.84/yqt/reservation/home/'; //可能存在跨域问题
 
 window.CLIENT_HOST = bboxClient;
-//test
+//testdfgdfg
