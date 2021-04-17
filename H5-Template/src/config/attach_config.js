@@ -4,5 +4,5 @@ export const FjClassMap = {
 	'Word':'fj-photo-word',
 	'Excel':'fj-photo-excel',
 	'PPT':'fj-photo-ppt',
-	'PDF':'fj-photo-pdf'
+	'PDF':'fj-photo-pdf',
 }
