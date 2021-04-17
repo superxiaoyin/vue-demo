@@ -40,7 +40,7 @@
         },
         methods: {
             log(str) {
-                // console.log(str)
+                console.log(str)
             },
             onChange(value) {
                 console.log('onChange == ', value);
