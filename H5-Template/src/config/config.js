@@ -5,3 +5,4 @@ var clientHostTemp = 'https://10.2.25.84/yqt/reservation/home/'; //可能存在�
 
 window.CLIENT_HOST = bboxClient;
 //testdfgdfg
+// chenfu
